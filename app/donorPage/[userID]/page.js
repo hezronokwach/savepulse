@@ -2,36 +2,27 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import styles from './DonorTrackingPage.module.css';
-
-const DONATION_STAGES = [
-    'in store at satelitte',
-    'screaning',
-    'processing',
-    'ready for patient',
-    'delivered'
-];
+import SideNav5 from '@/Components/SideNav5/page';
 
 export default function DonorTrackingPage() {
     const [userData, setUserData] = useState(null);
-    const [donations, setDonations] = useState([]);
-    const [emergencies, setEmergencies] = useState([]);
+    const [donationCount, setDonationCount] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const params = useParams();
+    const { userID } = useParams(); // Get the satellite ID from the URL
+    
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userID = params.userID;
-                const response = await fetch(`http://localhost:3000/donorPage/${userID}`);
+                const response = await fetch(`/api/donorPage/${userID}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
 
                 const data = await response.json();
                 setUserData(data.user);
-                setDonations(data.donations || []);
-                setEmergencies(data.emergencies || []);
+                setDonationCount(data.donationCount);
             } catch (error) {
                 setError(error.message);
             } finally {
@@ -40,88 +31,56 @@ export default function DonorTrackingPage() {
         };
 
         fetchData();
-    }, [params.userID]);
-
-    const getDonationCardClass = (donation, index) => {
-        const stageIndex = DONATION_STAGES.indexOf(donation.Status);
-        
-        if (index === donations.length - 1) return `${styles.donationCard} ${styles.active}`;
-        if (stageIndex !== -1) return `${styles.donationCard} ${styles.completed}`;
-        return styles.donationCard;
-    };
+    }, [userID]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <div className={styles.donorPage}>
-            {userData && (
-                <div className={styles.userInfo}>
-                    <h2>Welcome, {userData.firstName} {userData.lastName}</h2>
-                    <p>{userData.email}</p>
+        <>
+        <SideNav5 id={userID} />
+        <div className={styles.pageContainer}>
+           
+            
+            <div className={styles.mainContent}>
+                <div className={styles.welcomeSection}>
+                    <h1 className={styles.welcomeTitle}>
+                        Welcome, {userData?.firstName} {userData?.lastName}
+                    </h1>
+                    <p className={styles.userId}>User ID: {userID}</p>
                 </div>
-            )}
 
-{emergencies.length > 0 && (
-            <div className={styles.emergencyInfo}>
-                <h3>Emergency Requests</h3>
-                {emergencies.map((emergency, index) => (
-                    <div key={index} className={styles.emergencyCard}>
-                        <p><strong>Blood Type:</strong> {emergency.BloodType}</p>
-                        <p><strong>Region Location:</strong> {emergency.RegionLocation}</p>
-                        <p><strong></strong> {emergency.Message}</p>
-
+                <div className={styles.statsContainer}>
+                    <div className={styles.statsCard}>
+                        <h3>Blood Type</h3>
+                        <p className={styles.statsValue}>{userData?.bloodType || 'N/A'}</p>
                     </div>
-                ))}
-            </div>
-        )}
-
-            <div className={styles.donationProgressContainer}>
-                <div className={styles.donationProgressLine}></div>
-                <div className={styles.donationsList}>
-                    {donations.map((donation, index) => (
-                        <div key={index} className={getDonationCardClass(donation, index)}>
-                            <div className={styles.donationStageIndicator}>{index + 1}</div>
-                            <h4>Donation Details</h4>
-
-                            {donation.DonationDate && (
-                                <p>
-                                    <span>Date:</span>
-                                    <span>{donation.DonationDate}</span>
-                                </p>
-                            )}
-
-                            {donation.BloodType && (
-                                <p>
-                                    <span>Blood Type:</span>
-                                    <span>{donation.BloodType}</span>
-                                </p>
-                            )}
-
-                            {donation.Status && (
-                                <p>
-                                    <span>Status:</span>
-                                    <span>{donation.Status}</span>
-                                </p>
-                            )}
-
-                            {donation.FacilityName && (
-                                <p>
-                                    <span>Facility:</span>
-                                    <span>{donation.FacilityName}</span>
-                                </p>
-                            )}
-
-                            {donation.Feedback && (
-                                <p>
-                                    <span>Feedback:</span>
-                                    <span>{donation.Feedback}</span>
-                                </p>
-                            )}
-                        </div>
-                    ))}
+                    
+                    <div className={styles.statsCard}>
+                        <h3>Total Donations</h3>
+                        <p className={styles.statsValue}>{donationCount}</p>
+                    </div>
                 </div>
             </div>
         </div>
+        </>
     );
 }
+
+// {emergencies.length > 0 && (
+//     <div className={styles.emergencySection}>
+//         <h2>Emergency Blood Requests</h2>
+//         <div className={styles.emergencyCards}>
+//             {emergencies.map((emergency, index) => (
+//                 <div key={index} className={styles.emergencyCard}>
+//                     <div className={styles.emergencyHeader}>
+//                         <span className={styles.urgentBadge}>Urgent</span>
+//                         <span className={styles.bloodType}>{emergency.BloodType}</span>
+//                     </div>
+//                     <p className={styles.location}>{emergency.RegionLocation}</p>
+//                     <p className={styles.message}>{emergency.Message}</p>
+//                 </div>
+//             ))}
+//         </div>
+//     </div>
+// )}

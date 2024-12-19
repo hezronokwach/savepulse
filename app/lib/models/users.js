@@ -30,13 +30,3 @@ const userSchema = new Schema({
 const User = models.User || model('User', userSchema);
 
 export default User;
-/*
-type User struct {
-	UserID      string `gorm:"primaryKey;uniqueIndex"`
-	Email       string `gorm:"uniqueIndex;not null"`
-	Password    string `gorm:"not null"`
-	PhoneNumber string
-	FirstName   string
-	LastName    string
-}
-    */

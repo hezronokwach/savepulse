@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import SideNav2 from '@/Components/SideNav2/page';
-import DonorForm from './donoradd/page';
 
 
 export default function SatelliteDashboard() {
