@@ -1,0 +1,116 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px); /* Subtract estimated navbar and footer height */
+    width: 100%;
+    position: absolute;
+    top: 60px; /* Adjust based on your navbar height */
+    left: 0;
+    padding: 0 1rem;
+    overflow: hidden; /* Prevent scrolling */
+    flex-direction: column;
+    align-items: center;
+}
+
+.pageTitle {
+    text-align: center; /* Centers the text */
+    font-weight: bold; /* Makes the text bold */
+    font-size: 2.5rem; /* Adjusts the title font size */
+    margin-bottom: 1.5rem; /* Adds spacing between the title and the form */
+    color: #333; /* Sets the title color */
+}
+
+.form {
+    width: 100%;
+    max-width: 500px;
+    background-color: rgba(161, 152, 152, 0.2); /* Glassy background */
+    backdrop-filter: blur(70px); /* Blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* .form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+} */
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.formGroup label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: large;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.input {
+    padding: 0.75rem;
+    border: 1px solid #E60000;
+    background-color: rgb(236, 220, 220);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    color: black;
+}
+
+.input:focus {
+    outline: none;
+    border-color: rgba(172, 107, 96, 0.5);
+    box-shadow: 0 0 0 2px rgba(133, 35, 64, 0.25);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.input:hover {
+    border-color: rgba(112, 16, 16, 0.3);
+}
+
+.submitButton {
+    padding: 0.75rem;
+    background-color: #E60000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%; /* Full width button */
+}
+
+.submitButton:hover {
+    background-color: rgba(207, 64, 39, 0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.successMessage {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+}
+
+.errorMessage {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .form {
+        width: 90%;
+        padding: 1rem;
+    }
+}

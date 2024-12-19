@@ -1,0 +1,192 @@
+/* sidenav.css */
+:root {
+  --primary-red: #dc2626;
+  --light-red: #fee2e2;
+  --text-dark: #1f2937;
+  --text-light: #4b5563;
+  --bg-light: #f9fafb;
+  --bg-white: #ffffff;
+}
+
+.side-nav {
+  width: 280px;
+  height: 100vh;
+  background-color: var(--bg-white);
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.nav-logo {
+  text-align: center;
+  margin-bottom: 32px;
+  font-weight: 800;
+  color: var(--primary-red);
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 15px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.nav-link:hover {
+  background-color: var(--light-red);
+}
+
+.nav-link.active {
+  background-color: var(--light-red);
+  font-weight: 600;
+}
+
+.nav-link-icon {
+  margin-right: 16px;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover .nav-link-icon,
+.nav-link.active .nav-link-icon {
+  color: var(--primary-red);
+}
+
+.nav-link-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.nav-link-description {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  line-height: 1.2;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .side-nav {
+    width: 80px;
+    align-items: center;
+    padding: 16px;
+  }
+
+  .nav-logo {
+    font-size: 0;
+  }
+
+  .nav-logo svg {
+    margin-right: 0;
+  }
+
+  .nav-link-content {
+    display: none;
+  }
+
+  .nav-link {
+    justify-content: center;
+    padding: 12px;
+  }
+}
+
+/* Minimized SideNav with Border Radius */
+.side-nav {
+  position: fixed; 
+  left: 0;
+  bottom: 0; 
+  width: 240px; /* Reduced width */
+  height: 90vh; /* Reduced height */
+  background-color: var(--bg-white);
+  border: 1px solid #a04129; /* Full border for a card-like look */
+  border-radius: 12px; /* Added border radius */
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.side-nav-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Reduced gap for compactness */
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem; /* Slightly smaller font */
+  font-weight: 600;
+  padding: 14px 20px; /* Reduced padding */
+  border-radius: 8px;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: var(--light-red);
+  color: var(--primary-red);
+}
+
+.nav-button:active {
+  background-color: var(--primary-red);
+  color: grey;
+}
+
+.sign-out-button {
+  background-color: var(--primary-red);
+  color: var(--bg-white);
+  font-weight: bold;
+  text-align: center;
+  padding: 14px 20px; /* Matches nav-button size */
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.sign-out-button:hover {
+  background-color: #b91c1c; /* Darker red */
+}
+
+.hospital-message {
+  text-align: center;
+  font-size: 1rem; /* Reduced font size */
+  font-weight: bold;
+  color: var(--primary-red);
+  background-color: var(--light-red);
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+

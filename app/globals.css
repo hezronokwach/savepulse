@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary-color: #E60000;
+    --secondary-color: #FF3333;
+    --background-color: #F5F5F5;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: 'Arial', sans-serif;
+
+  /* Add background image using Tailwind's utility classes */
+  background-image: url('/images/img7.jpg/'); /* Path to the background image */
+  background-size: cover; /* Ensures the image covers the entire viewport */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents repeating the background image */
+  background-attachment: fixed; /* Keeps the background fixed when scrolling */
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  
+  /* Add these properties to center the grid */
+  justify-content: center; /* Horizontally centers the entire grid */
+  justify-items: center;   /* Centers each grid item horizontally */
+  max-width: 1200px;       /* Optional: limits max width and centers grid */
+  margin: 0 auto;          /* Centers the grid container itself */
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        grid-gap: 10px;
+        padding: 10px;
+    }
+}
+.dashboard-content {
+  margin-left: 220px; /* adjust this value to set the margin between the sidebar and the content */
+  padding: 20px;
+}

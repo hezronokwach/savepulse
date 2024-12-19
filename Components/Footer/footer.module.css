@@ -1,0 +1,42 @@
+/* footer.module.css */
+.footerdiv {
+   background-color: white;
+   box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+   padding: 1.5rem;
+   text-align: center;
+   flex-shrink: 0;
+   width: 100%; /* Ensure full width */
+}
+
+.copyright {
+   color: #6B7280;
+   font-size: 0.875rem;
+   margin-bottom: 1rem;
+}
+
+.socialLinks {
+   display: flex;
+   justify-content: center;
+   gap: 1.5rem;
+   list-style-type: none;
+   padding: 0;
+}
+
+.socialLinkItem {
+   color: #6B7280;
+   font-weight: 600;
+   transition: color 0.3s ease;
+   cursor: pointer;
+}
+
+.socialLinkItem:hover {
+   color: #E60000;
+}
+
+@media (max-width: 640px) {
+   .socialLinks {
+       flex-direction: column;
+       align-items: center;
+       gap: 0.75rem;
+   }
+}

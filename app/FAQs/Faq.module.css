@@ -1,0 +1,42 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .faqs {
+    border-top: 1px solid #ddd;
+  }
+  
+  .faqItem {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    cursor: pointer;
+  }
+  
+  .question {
+    font-size: 1.2rem;
+    color: #007bff;
+    margin: 0;
+    transition: color 0.3s;
+  }
+  
+  .question:hover {
+    color: #0056b3;
+  }
+  
+  .answer {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
