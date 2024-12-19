@@ -16,8 +16,8 @@
 .pageTitle {
     text-align: center; /* Centers the text */
     font-weight: bold; /* Makes the text bold */
-    font-size: 2.5rem; /* Adjusts the title font size */
-    margin-bottom: 1.5rem; /* Adds spacing between the title and the form */
+    font-size: 2rem; /* Adjusts the title font size */
+    margin-bottom: 1rem; /* Adds spacing between the title and the form */
     color: #333; /* Sets the title color */
 }
 

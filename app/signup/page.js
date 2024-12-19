@@ -27,7 +27,7 @@ export default function UserSignUp() {
             if (response.ok) {
                 setMessage({ type: "success", text: data.message });
                 setTimeout(() => {
-                    window.location.href = '/';
+                    window.location.href = '/login';
                 }, 1000);
             } else {
                 setMessage({ type: "error", text: data.message });
@@ -40,6 +40,9 @@ export default function UserSignUp() {
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit} className={styles.form}>
+            <h2 style={{ textAlign: 'center', fontWeight: 'bold', marginBottom: '1rem', fontSize: '2.0rem' }}>
+    Donor Sign Up
+</h2>
                 {/* <div className={styles.formGroup}>
                     <label htmlFor="userID">User ID</label>
                     <input

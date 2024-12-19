@@ -37,9 +37,10 @@ export default function UserLogin() {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.pageTitle}>Donor Login</h1>
+            
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.formGroup}>
+                <h1 className={styles.pageTitle}>Donor Login</h1>
                     <label htmlFor="email">Email</label>
                     <input
                         id="email"
